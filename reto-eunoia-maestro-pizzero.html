@@ -7,311 +7,91 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --brand: #7B52AB;
-  --brand-light: #EDE7F6;
-  --brand-dark: #5C3D8F;
-  --accent: #FF8C00;
-  --success: #2E7D32;
-  --success-light: #E8F5E9;
-  --danger: #C62828;
-  --danger-light: #FFEBEE;
-  --white: #FFFFFF;
-  --text: #1A1A2E;
-  --text-muted: #5E5E7A;
-  --border: rgba(123,82,171,0.18);
-  --radius: 16px;
-  --radius-sm: 10px;
+  --brand: #7B52AB; --brand-light: #EDE7F6; --brand-dark: #5C3D8F;
+  --accent: #FF8C00; --success: #2E7D32; --success-light: #E8F5E9;
+  --danger: #C62828; --danger-light: #FFEBEE; --white: #FFFFFF;
+  --text: #1A1A2E; --text-muted: #5E5E7A; --border: rgba(123,82,171,0.18);
+  --radius: 16px; --radius-sm: 10px;
 }
-body {
-  background: #F4F0FB;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  min-height: 100vh;
-  color: var(--text);
-}
-#app {
-  max-width: 420px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background: var(--white);
-}
+body { background: #F4F0FB; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; color: var(--text); }
+#app { max-width: 420px; margin: 0 auto; min-height: 100vh; background: var(--white); }
 .screen { display: none; animation: fadeIn 0.4s ease; }
 .screen.active { display: block; }
-@keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 @keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.12)} 100%{transform:scale(1)} }
 @keyframes slideIn { from{transform:translateX(30px);opacity:0} to{transform:translateX(0);opacity:1} }
 @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
-@keyframes pointsPop {
-  0%{opacity:0;transform:translate(-50%,-60%) scale(0.7)}
-  30%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
-  70%{opacity:1;transform:translate(-50%,-50%) scale(1)}
-  100%{opacity:0;transform:translate(-50%,-40%) scale(0.9)}
-}
-.hero-header {
-  background: var(--brand);
-  border-radius: 0 0 28px 28px;
-  padding: 28px 20px 24px;
-  text-align: center;
-  color: var(--white);
-  margin-bottom: 24px;
-}
+@keyframes pointsPop { 0%{opacity:0;transform:translate(-50%,-60%) scale(0.7)} 30%{opacity:1;transform:translate(-50%,-50%) scale(1.1)} 70%{opacity:1;transform:translate(-50%,-50%) scale(1)} 100%{opacity:0;transform:translate(-50%,-40%) scale(0.9)} }
+.hero-header { background: var(--brand); border-radius: 0 0 28px 28px; padding: 28px 20px 24px; text-align: center; color: var(--white); margin-bottom: 24px; }
 .hero-header .logo-emoji { font-size: 48px; display: block; margin-bottom: 8px; animation: pop 2s ease infinite; }
 .hero-header h1 { font-size: 22px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
 .hero-header .sub { font-size: 14px; opacity: 0.88; line-height: 1.5; }
-.card {
-  background: var(--white);
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin: 0 16px 16px;
-}
+.card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 0 16px 16px; }
 .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 14px; color: var(--brand-dark); }
 .form-group { margin-bottom: 16px; }
 .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
-.form-group input {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 15px;
-  background: var(--white);
-  color: var(--text);
-  transition: border-color 0.2s;
-  outline: none;
-}
+.form-group input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; background: var(--white); color: var(--text); transition: border-color 0.2s; outline: none; }
 .form-group input:focus { border-color: var(--brand); }
 .form-group input.error { border-color: var(--danger); background: var(--danger-light); }
-.btn-main {
-  display: block;
-  width: calc(100% - 32px);
-  margin: 0 16px 20px;
-  background: var(--brand);
-  color: var(--white);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 15px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 0.3px;
-  transition: background 0.2s, transform 0.1s;
-  text-align: center;
-}
+.btn-main { display: block; width: calc(100% - 32px); margin: 0 16px 20px; background: var(--brand); color: var(--white); border: none; border-radius: var(--radius-sm); padding: 15px; font-size: 16px; font-weight: 700; cursor: pointer; letter-spacing: 0.3px; transition: background 0.2s, transform 0.1s; text-align: center; }
 .btn-main:hover { background: var(--brand-dark); }
 .btn-main:active { transform: scale(0.98); }
 .btn-main:disabled { background: #B0A0CC; cursor: not-allowed; }
-.progress-bar-wrap {
-  background: var(--brand);
-  padding: 14px 20px 10px;
-  color: var(--white);
-  border-radius: 0 0 20px 20px;
-  margin-bottom: 20px;
-}
+.progress-bar-wrap { background: var(--brand); padding: 14px 20px 10px; color: var(--white); border-radius: 0 0 20px 20px; margin-bottom: 20px; }
 .progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
 .progress-label .score { font-weight: 700; font-size: 15px; }
 .bar-track { background: rgba(255,255,255,0.3); border-radius: 99px; height: 8px; }
 .bar-fill { background: #FFD740; border-radius: 99px; height: 8px; transition: width 0.5s ease; }
-.question-card {
-  background: var(--white);
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius);
-  margin: 0 16px 16px;
-  overflow: hidden;
-  animation: slideIn 0.35s ease;
-}
-.q-zone-badge {
-  background: var(--brand);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 8px 16px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+.question-card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius); margin: 0 16px 16px; overflow: hidden; animation: slideIn 0.35s ease; }
+.q-zone-badge { background: var(--brand); color: var(--white); font-size: 12px; font-weight: 700; padding: 8px 16px; letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
 .q-zone-badge .zone-icon { font-size: 20px; }
 .q-text { padding: 16px 16px 12px; font-size: 15px; font-weight: 500; line-height: 1.55; color: var(--text); }
 .options-list { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px; }
-.opt-btn {
-  background: #F8F6FC;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 13px 14px;
-  text-align: left;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--text);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.45;
-}
+.opt-btn { background: #F8F6FC; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 13px 14px; text-align: left; font-size: 14px; cursor: pointer; transition: all 0.2s; color: var(--text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.45; }
 .opt-btn:hover:not(:disabled) { border-color: var(--brand); background: var(--brand-light); }
-.opt-btn .opt-letter {
-  background: var(--brand);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 700;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
+.opt-btn .opt-letter { background: var(--brand); color: var(--white); font-size: 12px; font-weight: 700; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 .opt-btn.correct { background: var(--success-light); border-color: var(--success); animation: pop 0.4s ease; }
 .opt-btn.correct .opt-letter { background: var(--success); }
 .opt-btn.wrong { background: var(--danger-light); border-color: var(--danger); animation: shake 0.4s ease; }
 .opt-btn.wrong .opt-letter { background: var(--danger); }
 .opt-btn:disabled { cursor: not-allowed; }
-.feedback-bubble {
-  margin: 0 16px 16px;
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  display: none;
-  animation: fadeIn 0.3s ease;
-}
+.feedback-bubble { margin: 0 16px 16px; border-radius: var(--radius-sm); padding: 14px 16px; font-size: 14px; font-weight: 500; line-height: 1.5; display: none; animation: fadeIn 0.3s ease; }
 .feedback-bubble.show { display: block; }
 .feedback-bubble.ok { background: var(--success-light); color: var(--success); border: 1px solid #A5D6A7; }
 .feedback-bubble.bad { background: var(--danger-light); color: var(--danger); border: 1px solid #FFCDD2; }
 .feedback-bubble .fb-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.btn-next {
-  display: none;
-  width: calc(100% - 32px);
-  margin: 0 16px 20px;
-  background: var(--accent);
-  color: var(--white);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 14px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-}
+.btn-next { display: none; width: calc(100% - 32px); margin: 0 16px 20px; background: var(--accent); color: var(--white); border: none; border-radius: var(--radius-sm); padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
 .btn-next.show { display: block; animation: fadeIn 0.3s ease; }
 .btn-next:hover { background: #E07800; }
-.result-header {
-  background: var(--brand);
-  border-radius: 0 0 28px 28px;
-  padding: 28px 20px 24px;
-  text-align: center;
-  color: var(--white);
-  margin-bottom: 20px;
-}
-.score-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  border: 3px solid rgba(255,255,255,0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 14px;
-}
+.result-header { background: var(--brand); border-radius: 0 0 28px 28px; padding: 28px 20px 24px; text-align: center; color: var(--white); margin-bottom: 20px; }
+.score-circle { width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 3px solid rgba(255,255,255,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 14px; }
 .score-circle .pts { font-size: 32px; font-weight: 800; }
 .score-circle .pts-label { font-size: 11px; opacity: 0.8; font-weight: 500; }
 .result-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
 .result-header .result-sub { font-size: 13px; opacity: 0.88; }
-.cert-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px;
-  background: var(--brand-light);
-  border: 1.5px solid var(--brand);
-  border-radius: var(--radius-sm);
-  margin: 0 16px 16px;
-}
-.cert-check input[type=checkbox] {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--brand);
-  flex-shrink: 0;
-  margin-top: 2px;
-  cursor: pointer;
-}
+.cert-check { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: var(--brand-light); border: 1.5px solid var(--brand); border-radius: var(--radius-sm); margin: 0 16px 16px; }
+.cert-check input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--brand); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
 .cert-check label { font-size: 13px; line-height: 1.5; color: var(--brand-dark); font-weight: 500; cursor: pointer; }
 .summary-list { padding: 0 16px 4px; }
-.summary-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border);
-  font-size: 13px;
-}
+.summary-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 0.5px solid var(--border); font-size: 13px; }
 .summary-item:last-child { border-bottom: none; }
 .s-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .s-dot.ok { background: var(--success); }
 .s-dot.bad { background: var(--danger); }
-.success-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  text-align: center;
-  min-height: 100vh;
-}
+.success-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; min-height: 100vh; }
 .success-big { font-size: 64px; margin-bottom: 16px; animation: pop 1s ease; }
 .success-screen h2 { font-size: 22px; font-weight: 700; color: var(--brand); margin-bottom: 10px; }
 .success-screen p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; max-width: 320px; }
-.tag-saved {
-  background: var(--success-light);
-  color: var(--success);
-  border: 1px solid #A5D6A7;
-  border-radius: 99px;
-  padding: 8px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.legal-note {
-  font-size: 11px;
-  color: var(--text-muted);
-  text-align: center;
-  padding: 0 24px 24px;
-  line-height: 1.5;
-}
-.points-flash {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: var(--accent);
-  color: var(--white);
-  font-size: 28px;
-  font-weight: 800;
-  padding: 16px 30px;
-  border-radius: 99px;
-  pointer-events: none;
-  z-index: 999;
-  animation: pointsPop 0.8s ease forwards;
-}
+.tag-saved { background: var(--success-light); color: var(--success); border: 1px solid #A5D6A7; border-radius: 99px; padding: 8px 20px; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+.legal-note { font-size: 11px; color: var(--text-muted); text-align: center; padding: 0 24px 24px; line-height: 1.5; }
+.points-flash { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: var(--accent); color: var(--white); font-size: 28px; font-weight: 800; padding: 16px 30px; border-radius: 99px; pointer-events: none; z-index: 999; animation: pointsPop 0.8s ease forwards; }
 .error-msg { color: var(--danger); font-size: 12px; margin-top: 5px; display: none; }
 .error-msg.show { display: block; }
-.loading-msg {
-  text-align: center;
-  padding: 10px;
-  font-size: 13px;
-  color: var(--text-muted);
-}
 </style>
 </head>
 <body>
 <div id="app">
 
-<!-- PANTALLA 1: REGISTRO -->
 <div id="s0" class="screen active">
   <div class="hero-header">
     <span class="logo-emoji">🍕</span>
@@ -335,7 +115,6 @@ body {
   <button class="btn-main" onclick="iniciarReto()">🚀 ¡Iniciar el Reto!</button>
 </div>
 
-<!-- PANTALLA 2: PREGUNTAS -->
 <div id="s1" class="screen">
   <div class="progress-bar-wrap">
     <div class="progress-label">
@@ -344,7 +123,7 @@ body {
     </div>
     <div class="bar-track"><div class="bar-fill" id="bar-fill" style="width:0%"></div></div>
   </div>
-  <div class="question-card" id="qcard">
+  <div class="question-card">
     <div class="q-zone-badge"><span class="zone-icon" id="q-icon"></span><span id="q-zone"></span></div>
     <p class="q-text" id="q-text"></p>
   </div>
@@ -356,7 +135,6 @@ body {
   <button class="btn-next" id="btn-next" onclick="nextQuestion()">Siguiente pregunta →</button>
 </div>
 
-<!-- PANTALLA 3: RESULTADOS -->
 <div id="s2" class="screen">
   <div class="result-header">
     <div class="score-circle">
@@ -378,7 +156,6 @@ body {
   <div class="legal-note" id="legal-note-result"></div>
 </div>
 
-<!-- PANTALLA 4: CONFIRMACIÓN -->
 <div id="s3" class="screen">
   <div class="success-screen">
     <div class="success-big">🎉</div>
@@ -391,241 +168,158 @@ body {
 </div>
 
 <script>
-const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyRHSgjmhdM7747Bd1vHPZprRZEZuqPTROYEu62PqzL5luf1nkVTyRCRVCXiiPgPzz1/exec";
+var WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyRHSgjmhdM7747Bd1vHPZprRZEZuqPTROYEu62PqzL5luf1nkVTyRCRVCXiiPgPzz1/exec";
 
-const preguntas = [
-  {
-    zona: "La Zona Caliente",
-    icono: "🔥",
-    tema: "Quemaduras",
-    texto: "Estás sacando una pizza en pleno pico de pedidos y no encuentras los guantes térmicos. ¿Qué haces?",
-    opciones: [
-      "Agarro la bandeja con un limpión húmedo, ¡eso aguanta!",
-      "Le pido a un compañero que me preste los suyos o busco los de repuesto antes de meter las manos al horno.",
-      "Meto la mano rápido, yo ya tengo callo."
-    ],
-    correcta: 1,
-    feedbackOk: ["¡Fuego en el horno, hielo en la cabeza! 🧊🔥", "Protegerse siempre es más rápido que curar una quemadura. Esperar o buscar los guantes es la única opción segura. ¡Excelente decisión, Maestro Pizzero!"],
-    feedbackMal: ["¡Eso te quema más rápido que la mozzarella en el horno! 🧀", "Un trapo húmedo conduce el calor y puede empeorar las quemaduras. Nunca comprometas tu integridad por velocidad. La respuesta correcta era buscar los guantes o pedir ayuda."]
-  },
-  {
-    zona: "La Pista de Patinaje",
-    icono: "🛟",
-    tema: "Caídas",
-    texto: "Vas caminando hacia la caja y notas que se derramó un poco de aceite de oliva en el pasillo. ¿Qué haces?",
-    opciones: [
-      "Paso por un ladito al estilo ninja para no interrumpir el servicio.",
-      "Aviso a mis compañeros del peligro, limpio inmediatamente o pongo la señal de Piso Mojado si debo ir por el trapero.",
-      "Grito '¡Cuidado!' pero sigo de largo porque tengo que llevar un domicilio."
-    ],
-    correcta: 1,
-    feedbackOk: ["¡Cero caídas, cien puntos! 🏆", "Aislar el peligro y señalizar es el protocolo correcto. ¡Protegiste a todo el equipo! Ese es el verdadero Maestro Pizzero Seguro."],
-    feedbackMal: ["¡El aceite no discrimina ninjas ni domiciliarios! 😅", "Los accidentes por caídas son los más comunes en cocinas. Ignorar o evadir el peligro lo deja activo para el próximo compañero. La respuesta correcta era señalizar y limpiar."]
-  },
-  {
-    zona: "El Levantamiento de Poder",
-    icono: "💪",
-    tema: "Ergonomía",
-    texto: "Llegó el pedido semanal y tienes que levantar un bulto de harina pesado del piso a la estantería. ¿Cómo lo haces?",
-    opciones: [
-      "Doblo las rodillas, mantengo la espalda recta, acerco el bulto al cuerpo y subo haciendo fuerza con las piernas.",
-      "Me agacho doblando la espalda y lo subo de un jalón, ¡así fortalezco la zona lumbar!",
-      "Lo arrastro por todo el local con el pie."
-    ],
-    correcta: 0,
-    feedbackOk: ["¡Técnica de campeón, espalda de acero! 🏋️", "¡Eso es exactamente la técnica correcta! Doblar rodillas, espalda recta y fuerza con piernas evita hernias y lesiones lumbares. ¡Eres una máquina!"],
-    feedbackMal: ["¡La espalda no es de goma! 🤕", "Doblar la espalda al levantar peso es la causa #1 de hernias discales. Las piernas son los músculos más fuertes del cuerpo. La respuesta correcta era la técnica con rodillas flexionadas."]
-  },
-  {
-    zona: "Corte Perfecto",
-    icono: "🔪",
-    tema: "Riesgo Mecánico",
-    texto: "Estás cortando ingredientes y un compañero te llama desde el otro lado de la cocina. ¿Qué haces?",
-    opciones: [
-      "Me volteo con el cuchillo en la mano para responderle y sigo cortando sin mirar.",
-      "Dejo el cuchillo sobre la mesa, me volteo, le respondo y luego retomo mi tarea.",
-      "Camino hacia él con la punta del cuchillo hacia adelante para que me escuche mejor."
-    ],
-    correcta: 1,
-    feedbackOk: ["¡Dedos completos, reto ganado! ✌️", "¡Perfecto! Dejar el cuchillo antes de atender cualquier distracción es la regla de oro en el manejo de herramientas cortantes. ¡Ningún accidente con esa disciplina!"],
-    feedbackMal: ["¡Los cuchillos y las distracciones son la peor combinación! ⚠️", "El 80% de cortes accidentales ocurren por distracciones. La respuesta correcta es siempre: deja la herramienta primero, luego atiende. ¡Tus manos te lo agradecerán!"]
-  },
-  {
-    zona: "Código Rojo",
-    icono: "🚨",
-    tema: "Emergencias",
-    texto: "De repente, un trapo cerca de los fogones se prende en fuego por accidente. ¿Qué haces?",
-    opciones: [
-      "Le echo un balde de agua inmediatamente, el agua apaga todo.",
-      "Le soplo fuerte o le pego con otro trapo para apagarlo.",
-      "Mantengo la calma, aviso a todos, apago la fuente de gas si es posible y uso el extintor multipropósito apuntando a la base del fuego."
-    ],
-    correcta: 2,
-    feedbackOk: ["¡Bombero de cinco estrellas! 🧯⭐⭐⭐⭐⭐", "¡Eso es exactamente el protocolo correcto! Calma, evacuar, cortar el gas y usar el extintor en la base. ¡Eres el héroe de la cocina!"],
-    feedbackMal: ["¡El agua en aceite ardiendo lo expande todo! 💥", "Nunca uses agua en incendios de cocina, puede causar una explosión de aceite. Soplar o golpear alimenta el fuego con oxígeno. La respuesta correcta era: calma, avisar, cortar gas y extintor en la base."]
-  }
+var preguntas = [
+  { zona:"La Zona Caliente", icono:"🔥", tema:"Quemaduras", texto:"Estás sacando una pizza en pleno pico de pedidos y no encuentras los guantes térmicos. ¿Qué haces?", opciones:["Agarro la bandeja con un limpión húmedo, ¡eso aguanta!","Le pido a un compañero que me preste los suyos o busco los de repuesto antes de meter las manos al horno.","Meto la mano rápido, yo ya tengo callo."], correcta:1, feedbackOk:["¡Fuego en el horno, hielo en la cabeza! 🧊🔥","Protegerse siempre es más rápido que curar una quemadura. ¡Excelente decisión, Maestro Pizzero!"], feedbackMal:["¡Eso te quema más rápido que la mozzarella en el horno! 🧀","Un trapo húmedo conduce el calor. La respuesta correcta era buscar los guantes o pedir ayuda."] },
+  { zona:"La Pista de Patinaje", icono:"🛟", tema:"Caídas", texto:"Vas caminando hacia la caja y notas que se derramó un poco de aceite de oliva en el pasillo. ¿Qué haces?", opciones:["Paso por un ladito al estilo ninja para no interrumpir el servicio.","Aviso a mis compañeros del peligro, limpio inmediatamente o pongo la señal de Piso Mojado si debo ir por el trapero.","Grito '¡Cuidado!' pero sigo de largo porque tengo que llevar un domicilio."], correcta:1, feedbackOk:["¡Cero caídas, cien puntos! 🏆","Aislar el peligro y señalizar es el protocolo correcto. ¡Protegiste a todo el equipo!"], feedbackMal:["¡El aceite no discrimina ninjas ni domiciliarios! 😅","La respuesta correcta era señalizar y limpiar el derrame inmediatamente."] },
+  { zona:"El Levantamiento de Poder", icono:"💪", tema:"Ergonomía", texto:"Llegó el pedido semanal y tienes que levantar un bulto de harina pesado del piso a la estantería. ¿Cómo lo haces?", opciones:["Doblo las rodillas, mantengo la espalda recta, acerco el bulto al cuerpo y subo haciendo fuerza con las piernas.","Me agacho doblando la espalda y lo subo de un jalón, ¡así fortalezco la zona lumbar!","Lo arrastro por todo el local con el pie."], correcta:0, feedbackOk:["¡Técnica de campeón, espalda de acero! 🏋️","Doblar rodillas, espalda recta y fuerza con piernas evita hernias y lesiones lumbares."], feedbackMal:["¡La espalda no es de goma! 🤕","Doblar la espalda al levantar peso es la causa #1 de hernias. La técnica correcta es con rodillas flexionadas."] },
+  { zona:"Corte Perfecto", icono:"🔪", tema:"Riesgo Mecánico", texto:"Estás cortando ingredientes y un compañero te llama desde el otro lado de la cocina. ¿Qué haces?", opciones:["Me volteo con el cuchillo en la mano para responderle y sigo cortando sin mirar.","Dejo el cuchillo sobre la mesa, me volteo, le respondo y luego retomo mi tarea.","Camino hacia él con la punta del cuchillo hacia adelante para que me escuche mejor."], correcta:1, feedbackOk:["¡Dedos completos, reto ganado! ✌️","Dejar el cuchillo antes de atender cualquier distracción es la regla de oro."], feedbackMal:["¡Los cuchillos y las distracciones son la peor combinación! ⚠️","La respuesta correcta es siempre: deja la herramienta primero, luego atiende."] },
+  { zona:"Código Rojo", icono:"🚨", tema:"Emergencias", texto:"De repente, un trapo cerca de los fogones se prende en fuego por accidente. ¿Qué haces?", opciones:["Le echo un balde de agua inmediatamente, el agua apaga todo.","Le soplo fuerte o le pego con otro trapo para apagarlo.","Mantengo la calma, aviso a todos, apago la fuente de gas si es posible y uso el extintor multipropósito apuntando a la base del fuego."], correcta:2, feedbackOk:["¡Bombero de cinco estrellas! 🧯⭐⭐⭐⭐⭐","Calma, evacuar, cortar el gas y usar el extintor en la base. ¡Eres el héroe de la cocina!"], feedbackMal:["¡El agua en aceite ardiendo lo expande todo! 💥","Nunca uses agua en incendios de cocina. La respuesta: calma, avisar, cortar gas y extintor en la base."] }
 ];
 
-let currentQ = 0;
-let score = 0;
-let answers = [];
-let nombre = '', cedula = '';
-const PTS_POR_CORRECTA = 20;
+var currentQ=0, score=0, answers=[], nombre='', cedula='', PTS=20;
 
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
 
-function iniciarReto() {
-  const n = document.getElementById('nombre').value.trim();
-  const c = document.getElementById('cedula').value.trim();
-  let ok = true;
-  if (!n) {
-    document.getElementById('err-nombre').classList.add('show');
-    document.getElementById('nombre').classList.add('error');
-    ok = false;
-  } else {
-    document.getElementById('err-nombre').classList.remove('show');
-    document.getElementById('nombre').classList.remove('error');
-  }
-  if (!c || c.length < 5) {
-    document.getElementById('err-cedula').classList.add('show');
-    document.getElementById('cedula').classList.add('error');
-    ok = false;
-  } else {
-    document.getElementById('err-cedula').classList.remove('show');
-    document.getElementById('cedula').classList.remove('error');
-  }
-  if (!ok) return;
-  nombre = n; cedula = c;
-  currentQ = 0; score = 0; answers = [];
-  showScreen('s1');
-  renderQuestion();
+function iniciarReto(){
+  var n=document.getElementById('nombre').value.trim();
+  var c=document.getElementById('cedula').value.trim();
+  var ok=true;
+  if(!n){document.getElementById('err-nombre').classList.add('show');document.getElementById('nombre').classList.add('error');ok=false;}
+  else{document.getElementById('err-nombre').classList.remove('show');document.getElementById('nombre').classList.remove('error');}
+  if(!c||c.length<5){document.getElementById('err-cedula').classList.add('show');document.getElementById('cedula').classList.add('error');ok=false;}
+  else{document.getElementById('err-cedula').classList.remove('show');document.getElementById('cedula').classList.remove('error');}
+  if(!ok)return;
+  nombre=n; cedula=c; currentQ=0; score=0; answers=[];
+  showScreen('s1'); renderQuestion();
 }
 
-function renderQuestion() {
-  const q = preguntas[currentQ];
-  document.getElementById('q-counter').textContent = 'Pregunta ' + (currentQ+1) + ' de 5';
-  document.getElementById('score-display').textContent = score;
-  document.getElementById('bar-fill').style.width = ((currentQ/5)*100) + '%';
-  document.getElementById('q-icon').textContent = q.icono;
-  document.getElementById('q-zone').textContent = q.zona + ' — ' + q.tema;
-  document.getElementById('q-text').textContent = q.texto;
-  const letters = ['A','B','C'];
-  const ol = document.getElementById('options-list');
-  ol.innerHTML = '';
-  q.opciones.forEach(function(op, i) {
-    const btn = document.createElement('button');
-    btn.className = 'opt-btn';
-    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span><span>' + op + '</span>';
-    btn.onclick = function() { selectOption(i, btn); };
+function renderQuestion(){
+  var q=preguntas[currentQ];
+  document.getElementById('q-counter').textContent='Pregunta '+(currentQ+1)+' de 5';
+  document.getElementById('score-display').textContent=score;
+  document.getElementById('bar-fill').style.width=((currentQ/5)*100)+'%';
+  document.getElementById('q-icon').textContent=q.icono;
+  document.getElementById('q-zone').textContent=q.zona+' — '+q.tema;
+  document.getElementById('q-text').textContent=q.texto;
+  var letters=['A','B','C'];
+  var ol=document.getElementById('options-list');
+  ol.innerHTML='';
+  q.opciones.forEach(function(op,i){
+    var btn=document.createElement('button');
+    btn.className='opt-btn';
+    btn.innerHTML='<span class="opt-letter">'+letters[i]+'</span><span>'+op+'</span>';
+    btn.onclick=function(){selectOption(i,btn);};
     ol.appendChild(btn);
   });
-  const fb = document.getElementById('feedback-bubble');
-  fb.classList.remove('show','ok','bad');
+  document.getElementById('feedback-bubble').classList.remove('show','ok','bad');
   document.getElementById('btn-next').classList.remove('show');
 }
 
-function selectOption(idx, btn) {
-  const q = preguntas[currentQ];
-  document.querySelectorAll('.opt-btn').forEach(function(b) { b.disabled = true; });
-  const fb = document.getElementById('feedback-bubble');
-  const isCorrect = idx === q.correcta;
-  if (isCorrect) {
-    btn.classList.add('correct');
-    score += PTS_POR_CORRECTA;
-    document.getElementById('score-display').textContent = score;
-    fb.className = 'feedback-bubble show ok';
-    document.getElementById('fb-title').textContent = q.feedbackOk[0];
-    document.getElementById('fb-body').textContent = q.feedbackOk[1];
-    showPointsFlash('+' + PTS_POR_CORRECTA + ' pts');
+function selectOption(idx,btn){
+  var q=preguntas[currentQ];
+  document.querySelectorAll('.opt-btn').forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById('feedback-bubble');
+  var isCorrect=idx===q.correcta;
+  if(isCorrect){
+    btn.classList.add('correct'); score+=PTS;
+    document.getElementById('score-display').textContent=score;
+    fb.className='feedback-bubble show ok';
+    document.getElementById('fb-title').textContent=q.feedbackOk[0];
+    document.getElementById('fb-body').textContent=q.feedbackOk[1];
+    showPointsFlash('+'+PTS+' pts');
   } else {
     btn.classList.add('wrong');
     document.querySelectorAll('.opt-btn')[q.correcta].classList.add('correct');
-    fb.className = 'feedback-bubble show bad';
-    document.getElementById('fb-title').textContent = q.feedbackMal[0];
-    document.getElementById('fb-body').textContent = q.feedbackMal[1];
+    fb.className='feedback-bubble show bad';
+    document.getElementById('fb-title').textContent=q.feedbackMal[0];
+    document.getElementById('fb-body').textContent=q.feedbackMal[1];
   }
-  answers.push({ zona: q.zona, correcto: isCorrect });
-  const btnNext = document.getElementById('btn-next');
+  answers.push({zona:q.zona,correcto:isCorrect});
+  var btnNext=document.getElementById('btn-next');
   btnNext.classList.add('show');
-  btnNext.textContent = currentQ < 4 ? 'Siguiente pregunta →' : 'Ver mis resultados 🏆';
+  btnNext.textContent=currentQ<4?'Siguiente pregunta →':'Ver mis resultados 🏆';
 }
 
-function showPointsFlash(text) {
-  const el = document.createElement('div');
-  el.className = 'points-flash';
-  el.textContent = text;
+function showPointsFlash(text){
+  var el=document.createElement('div');
+  el.className='points-flash'; el.textContent=text;
   document.body.appendChild(el);
-  setTimeout(function() { el.remove(); }, 900);
+  setTimeout(function(){el.remove();},900);
 }
 
-function nextQuestion() {
+function nextQuestion(){
   currentQ++;
-  if (currentQ >= preguntas.length) {
-    showResults();
-  } else {
-    renderQuestion();
-  }
+  if(currentQ>=preguntas.length) showResults();
+  else renderQuestion();
 }
 
-function showResults() {
-  document.getElementById('final-pts').textContent = score;
-  const pct = score / (preguntas.length * PTS_POR_CORRECTA);
-  let titulo = '';
-  if (pct === 1) titulo = '¡Puntaje Perfecto! Eres un Maestro Pizzero Seguro 🏆';
-  else if (pct >= 0.6) titulo = '¡Muy bien! Sigues mejorando tu seguridad 💪';
-  else titulo = '¡Sigue aprendiendo! La seguridad se practica cada día 📚';
-  document.getElementById('result-title').textContent = titulo;
-  document.getElementById('bar-fill').style.width = '100%';
-  const sl = document.getElementById('summary-list');
-  sl.innerHTML = '';
-  answers.forEach(function(a, i) {
-    const div = document.createElement('div');
-    div.className = 'summary-item';
-    div.innerHTML = '<div class="s-dot ' + (a.correcto?'ok':'bad') + '"></div><span style="flex:1">' + preguntas[i].zona + '</span><span style="font-size:12px;font-weight:600;color:' + (a.correcto?'#2E7D32':'#C62828') + '">' + (a.correcto?'Correcto ✓':'Incorrecto ✗') + '</span>';
+function showResults(){
+  document.getElementById('final-pts').textContent=score;
+  var pct=score/(preguntas.length*PTS);
+  var titulo=pct===1?'¡Puntaje Perfecto! Eres un Maestro Pizzero Seguro 🏆':pct>=0.6?'¡Muy bien! Sigues mejorando tu seguridad 💪':'¡Sigue aprendiendo! La seguridad se practica cada día 📚';
+  document.getElementById('result-title').textContent=titulo;
+  document.getElementById('bar-fill').style.width='100%';
+  var sl=document.getElementById('summary-list');
+  sl.innerHTML='';
+  answers.forEach(function(a,i){
+    var div=document.createElement('div');
+    div.className='summary-item';
+    div.innerHTML='<div class="s-dot '+(a.correcto?'ok':'bad')+'"></div><span style="flex:1">'+preguntas[i].zona+'</span><span style="font-size:12px;font-weight:600;color:'+(a.correcto?'#2E7D32':'#C62828')+'">'+(a.correcto?'Correcto ✓':'Incorrecto ✗')+'</span>';
     sl.appendChild(div);
   });
-  document.getElementById('legal-note-result').textContent = 'Participante: ' + nombre + ' | Cédula: ' + cedula + ' | Fecha: ' + new Date().toLocaleDateString('es-CO');
+  document.getElementById('legal-note-result').textContent='Participante: '+nombre+' | Cédula: '+cedula+' | Fecha: '+new Date().toLocaleDateString('es-CO');
   showScreen('s2');
 }
 
-function toggleFinalBtn() {
-  document.getElementById('btn-final').disabled = !document.getElementById('confirm-check').checked;
+function toggleFinalBtn(){
+  document.getElementById('btn-final').disabled=!document.getElementById('confirm-check').checked;
 }
 
-async function finalizar() {
-  const btnFinal = document.getElementById('btn-final');
-  btnFinal.textContent = 'Enviando datos... ⏳';
-  btnFinal.disabled = true;
+function finalizar(){
+  var btn=document.getElementById('btn-final');
+  btn.textContent='Enviando datos... ⏳';
+  btn.disabled=true;
 
-  const data = {
-    nombre: nombre,
-    cedula: cedula,
-    fecha: new Date().toLocaleString('es-CO'),
-    puntaje: score,
-    total: preguntas.length * PTS_POR_CORRECTA,
-    respuestas: answers.map(function(a, i) {
-      return { zona: preguntas[i].zona, correcto: a.correcto };
-    })
+  var cbName='cb_'+Date.now();
+  var payload={
+    nombre:nombre, cedula:cedula,
+    fecha:new Date().toLocaleString('es-CO'),
+    puntaje:score, total:preguntas.length*PTS,
+    callback:cbName,
+    respuestas:answers.map(function(a,i){return{zona:preguntas[i].zona,correcto:a.correcto};})
   };
 
-  try {
-    await fetch(WEBHOOK_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-  } catch (err) {
-    console.warn('Error de red al enviar:', err);
-  }
+  // JSONP — único método que funciona sin restricciones CORS
+  window[cbName]=function(res){
+    delete window[cbName];
+    var script=document.getElementById('jsonp-script');
+    if(script) script.parentNode.removeChild(script);
+    mostrarExito();
+  };
 
-  document.getElementById('success-msg').innerHTML =
-    'La participación de <strong>' + nombre + '</strong> (C.C. ' + cedula + ') con <strong>' + score + ' puntos</strong> ha sido registrada en la <strong>Matriz de Recursos Humanos de EUNOia</strong>. Queda constancia legal de tu capacitación mensual SG-SST. ¡Sigue siendo el Maestro Pizzero más seguro! 🍕';
+  // Timeout por si la respuesta no llega
+  setTimeout(function(){
+    if(window[cbName]){
+      delete window[cbName];
+      mostrarExito();
+    }
+  }, 5000);
 
+  var script=document.createElement('script');
+  script.id='jsonp-script';
+  script.src=WEBHOOK_URL+'?data='+encodeURIComponent(JSON.stringify(payload))+'&callback='+cbName;
+  document.body.appendChild(script);
+}
+
+function mostrarExito(){
+  document.getElementById('success-msg').innerHTML=
+    'La participación de <strong>'+nombre+'</strong> (C.C. '+cedula+') con <strong>'+score+' puntos</strong> ha sido registrada en la <strong>Matriz de Recursos Humanos de EUNOia</strong>. Queda constancia legal de tu capacitación mensual SG-SST. ¡Sigue siendo el Maestro Pizzero más seguro! 🍕';
   showScreen('s3');
 }
 </script>
